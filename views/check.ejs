@@ -1,0 +1,70 @@
+<!-- views/check.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include includes/head %>
+</head>
+<body class="container">
+
+    <header>
+        <% include includes/header %>
+    </header>
+
+    <main>
+        <div class="row">
+            <div class="col-sm-8">
+Checks!
+
+
+
+
+
+        <form id="checkbook_io" method="POST">
+              <input type="hidden" id="checkbook_var"
+                data-key="<%=process.env.CHECKBOOK_KEY%>"
+                data-amount='100'
+                data-name="Facilitron"
+                data-for="Facilitron"
+                data-description="Reservation"
+                data-user-email ='sgaylord@facilitrion.com'
+                data-redirect-url ="https://localhost:3333/check"
+                data-businessName ='Buyer Business Name'
+                data-firstName ='Buyer First Name'
+                data-lastName ='Buyer Last Name'
+                data-env = 'sandbox'/>
+              <script src="https://sandbox.checkbook.io/static/api/v1/checkbook.js" class="checkbook-button" id="checkbook_api_js">
+              </script>
+    </form>
+
+
+
+<form action="<%= action %>" method="post" name="check">
+<table>
+<% if (fields.length) { %>
+    <% fields.forEach(function(field){ %>
+        <tr>
+            <td>
+                <label><%= field.name %></label>
+            </td>
+            <td>
+                <input type="<%= field.type %>" name="<%= field.name %>" value="<%= field.value%>" <% if (field.property) { %> <%= field.property %> <% } %> >
+            </td>
+        </tr>
+    <% }) %>
+<% } %>
+</table>
+
+<button type="submit"><%= title %></button> <!--Title for button is same as that of the page-->
+</form>
+                
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <% include includes/footer %>
+    </footer>
+    
+</body>
+</html>

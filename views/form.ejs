@@ -1,0 +1,64 @@
+<!-- views/form.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include includes/head %>
+</head>
+<body class="container">
+
+    <header>
+        <% include includes/header %>
+    </header>
+
+    <main>
+   
+        <div class="row">
+            <div class="col-sm-8">
+            
+                <div class="jumbotron">
+<form action="<%= action %>" method="post" name="formtest">  
+<table cellspacing=0 cellpadding=10 border="1">
+<% if (fields.length) { %>
+    <% fields.forEach(function(field){ %>
+        <tr><td>
+        <label><%= field.name %></label>
+        </td><td>
+        <input type="<%= field.type %>" name="<%= field.name %>" value="<%= field.value%>" <% if (field.property) { %> <%= field.property %> <% } %> >
+        </td>
+        </tr>
+    <% }) %>
+<% } %>
+<tr><td colspan="2">
+<button type="submit"><%= title %></button> <!--Title for button is same as that of the page-->
+</td></tr>
+</table>
+</form>
+                </div>
+                
+            </div>
+            <div class="col-sm-4">
+                
+                <div class="well">
+<h2>Variable</h2>
+<p><%= tagline %></p>
+<h2>Loop</h2>
+<ul>
+    <% drinks.forEach(function(drink) { %>
+        <li><%= drink.name %> - <%= drink.drunkness %></li>
+    <% }); %>
+</ul>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+<%=comments%>
+
+    <footer>
+        <% include includes/footer %>
+    </footer>
+    
+</body>
+</html>
