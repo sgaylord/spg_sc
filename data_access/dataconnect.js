@@ -1,3 +1,7 @@
+//
+//	This is the main database connection file.
+//
+
 var mongoose = require('mongoose');
 var Schema   = mongoose.Schema;
 
